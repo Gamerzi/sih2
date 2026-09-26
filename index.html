@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jarvis</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            height: 100%;
+            background: #000;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            overflow: hidden;
+        }
+
+        /* ---- Top bar ---- */
+        #topbar {
+            height: 50px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            padding: 0 16px;
+            gap: 6px;
+        }
+
+        #topbar .title {
+            color: #000;
+            font-size: 18px;
+            margin-right: auto;
+        }
+
+        #topbar button {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            height: 36px;
+            padding: 0 12px;
+            border: none;
+            background: #fff;
+            color: #000;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #topbar button:hover {
+            background: #f0f0f0;
+        }
+
+        #topbar button.active {
+            background: #e5e5e5;
+        }
+
+        #topbar img {
+            width: 18px;
+            height: 18px;
+        }
+
+        #topbar .iconbtn {
+            padding: 0 8px;
+        }
+
+        /* ---- Screens ---- */
+        .screen {
+            display: none;
+            height: calc(100% - 50px);
+            width: 100%;
+        }
+
+        .screen.visible {
+            display: flex;
+        }
+
+        /* Home screen */
+        #home {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+
+        #home img.gif {
+            width: min(480px, 80vw);
+            border-radius: 8px;
+        }
+
+        #status {
+            color: #fff;
+            font-size: 16px;
+            min-height: 22px;
+        }
+
+        #micBtn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        #micBtn img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            transition: box-shadow 0.2s ease;
+        }
+
+        #micBtn.listening img {
+            box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.35);
+            animation: pulse 1.2s infinite;
+        }
+
+        #micBtn.speaking img {
+            box-shadow: 0 0 0 6px rgba(22, 163, 74, 0.35);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+            }
+
+            70% {
+                box-shadow: 0 0 0 16px rgba(37, 99, 235, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+            }
+        }
+
+        /* Chat screen */
+        #chat {
+            flex-direction: column;
+            padding: 20px 40px 20px 20px;
+            overflow-y: auto;
+        }
+
+        #chat img.mini-gif {
+            align-self: flex-end;
+            width: 200px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        #log {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .line {
+            margin: 10px 0;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .you {
+            color: #4f9eff;
+        }
+
+        .ai {
+            color: #ffffff;
+        }
+
+        /* Settings popover */
+        #settingsPanel {
+            display: none;
+            position: absolute;
+            top: 52px;
+            right: 16px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+            padding: 14px;
+            width: 220px;
+            z-index: 10;
+        }
+
+        #settingsPanel.visible {
+            display: block;
+        }
+
+        #settingsPanel label {
+            font-size: 13px;
+            color: #333;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        #settingsPanel select {
+            width: 100%;
+            font-size: 13px;
+            padding: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="topbar">
+        <span class="title">Jarvis</span>
+        <button id="homeBtn" class="active"><img src="Graphics/Home.png"> Home</button>
+        <button id="chatBtn"><img src="Graphics/Chats.png"> Chat</button>
+        <button id="settingsBtn" class="iconbtn"><img src="Graphics/Settings.png"></button>
+        <button id="closeBtn" class="iconbtn"><img src="Graphics/Close.png"></button>
+    </div>
+
+    <div id="settingsPanel">
+        <label for="voiceSelect">Voice</label>
+        <select id="voiceSelect"></select>
+    </div>
+
+    <div id="home" class="screen visible">
+        <img class="gif" src="Graphics/Jarvis.gif" alt="Jarvis">
+        <div id="status">Tap the mic to talk</div>
+        <button id="micBtn"><img src="Graphics/Mic_on.png" alt="mic"></button>
+    </div>
+
+    <div id="chat" class="screen">
+        <img class="mini-gif" src="Graphics/Jarvis.gif" alt="Jarvis">
+        <div id="log"></div>
+    </div>
+
+    <script>
+        const homeBtn = document.getElementById('homeBtn');
+        const chatBtn = document.getElementById('chatBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const settingsBtn = document.getElementById('settingsBtn');
+        const settingsPanel = document.getElementById('settingsPanel');
+        const voiceSelect = document.getElementById('voiceSelect');
+        const homeScreen = document.getElementById('home');
+        const chatScreen = document.getElementById('chat');
+        const micBtn = document.getElementById('micBtn');
+        const statusEl = document.getElementById('status');
+        const logEl = document.getElementById('log');
+
+        function showScreen(name) {
+            homeScreen.classList.toggle('visible', name === 'home');
+            chatScreen.classList.toggle('visible', name === 'chat');
+            homeBtn.classList.toggle('active', name === 'home');
+            chatBtn.classList.toggle('active', name === 'chat');
+        }
+        homeBtn.onclick = () => showScreen('home');
+        chatBtn.onclick = () => showScreen('chat');
+        closeBtn.onclick = () => window.close();
+
+        settingsBtn.onclick = () => settingsPanel.classList.toggle('visible');
+        document.addEventListener('click', (e) => {
+            if (!settingsPanel.contains(e.target) && e.target !== settingsBtn && !settingsBtn.contains(e.target)) {
+                settingsPanel.classList.remove('visible');
+            }
+        });
+
+        let voices = [];
+        let selectedVoice = null;
+        function loadVoices() {
+            voices = speechSynthesis.getVoices();
+            voiceSelect.innerHTML = '';
+            voices.forEach((v, i) => {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.textContent = `${v.name} (${v.lang})`;
+                voiceSelect.appendChild(opt);
+            });
+            if (voices.length) selectedVoice = voices[0];
+        }
+        speechSynthesis.onvoiceschanged = loadVoices;
+        loadVoices();
+        voiceSelect.onchange = () => { selectedVoice = voices[voiceSelect.value]; };
+
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+        if (recognition) {
+            recognition.lang = 'en-US';
+            recognition.continuous = false;
+            recognition.interimResults = false;
+        } else {
+            statusEl.textContent = "Speech recognition not supported here. Try Chrome.";
+        }
+
+        let listening = false;
+
+        function addLine(who, text) {
+            const div = document.createElement('div');
+            div.className = 'line ' + (who === 'you' ? 'you' : 'ai');
+            div.textContent = (who === 'you' ? 'You: ' : 'Jarvis: ') + text;
+            logEl.appendChild(div);
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        function speak(text) {
+            const utter = new SpeechSynthesisUtterance(text);
+            if (selectedVoice) utter.voice = selectedVoice;
+            utter.onstart = () => {
+                micBtn.classList.remove('listening');
+                micBtn.classList.add('speaking');
+                statusEl.textContent = 'Speaking...';
+            };
+            utter.onend = () => {
+                micBtn.classList.remove('speaking');
+                statusEl.textContent = 'Tap the mic to talk';
+            };
+            speechSynthesis.speak(utter);
+        }
+
+        async function askBackend(message) {
+            statusEl.textContent = 'Thinking...';
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message })
+                });
+                const data = await res.json();
+                addLine('ai', data.reply);
+                speak(data.reply);
+            } catch (err) {
+                statusEl.textContent = 'Error reaching Jarvis.';
+                console.error(err);
+            }
+        }
+
+        micBtn.addEventListener('click', () => {
+            if (!recognition || listening) return;
+            listening = true;
+            micBtn.classList.add('listening');
+            statusEl.textContent = 'Listening...';
+            recognition.start();
+        });
+
+        if (recognition) {
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                addLine('you', transcript);
+                askBackend(transcript);
+            };
+            recognition.onerror = () => {
+                statusEl.textContent = 'Could not hear you, tap to retry.';
+            };
+            recognition.onend = () => {
+                listening = false;
+                micBtn.classList.remove('listening');
+            };
+        }
+    </script>
+</body>
+
+</html>
