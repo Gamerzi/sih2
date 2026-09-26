@@ -12,8 +12,12 @@ from dotenv import load_dotenv
 # Vercel injects the env vars you set in the dashboard directly.
 load_dotenv()
 
+api_key = os.getenv("GROQ_API_KEY")
+if not api_key:
+    raise ValueError("GROQ_API_KEY environment variable is missing. Please set it in your .env file.")
+
 app = FastAPI()
-client = Groq(api_key=os.environ["GROQ_API_KEY"])
+client = Groq(api_key=api_key)
 
 STATIC_DIR = Path(__file__).parent / "static"
 
@@ -35,7 +39,7 @@ def home():
 @app.post("/api/chat")
 def chat(req: ChatRequest):
     completion = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="openai/gpt-oss-20b",
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
             {"role": "user", "content": req.message},
@@ -43,3 +47,13 @@ def chat(req: ChatRequest):
         temperature=0.7,
     )
     return {"reply": completion.choices[0].message.content}
+
+
+if __name__ == "__main__":
+    import uvicorn
+    import sys
+
+    # Ensure api directory is in sys.path for uvicorn reloader
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    uvicorn.run("index:app", host="127.0.0.1", port=8000, reload=True)
+
