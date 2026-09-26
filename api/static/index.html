@@ -3,13 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Jarvis AI - Next-Gen Voice Assistant</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --bg-dark: #000000;
@@ -39,7 +41,8 @@
             padding: 0;
         }
 
-        html, body {
+        html,
+        body {
             width: 100%;
             min-height: 100vh;
             background: #000000;
@@ -52,8 +55,10 @@
         /* Animated Starfield Background */
         .bg-glow {
             position: fixed;
-            top: 0; left: 0;
-            width: 100vw; height: 100vh;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
@@ -73,7 +78,8 @@
         .blob-1 {
             top: -5%;
             left: 5%;
-            width: 550px; height: 550px;
+            width: 550px;
+            height: 550px;
             opacity: 0.28;
             background: radial-gradient(circle, #1a4fff, #7c3aed);
         }
@@ -81,7 +87,8 @@
         .blob-2 {
             bottom: -10%;
             right: 5%;
-            width: 650px; height: 650px;
+            width: 650px;
+            height: 650px;
             opacity: 0.22;
             background: radial-gradient(circle, #00e5ff, #0066ff);
             animation-delay: -8s;
@@ -91,7 +98,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 400px; height: 400px;
+            width: 400px;
+            height: 400px;
             opacity: 0.1;
             background: radial-gradient(circle, #ec4899, #7c3aed);
             animation-delay: -4s;
@@ -105,22 +113,32 @@
             z-index: 0;
             pointer-events: none;
             background-image:
-                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
             background-size: 60px 60px;
             mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
         }
 
         @keyframes floatBlob {
-            0%   { transform: translate(0,0) scale(1); }
-            40%  { transform: translate(50px, 30px) scale(1.08); }
-            100% { transform: translate(-30px, 55px) scale(0.94); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            40% {
+                transform: translate(50px, 30px) scale(1.08);
+            }
+
+            100% {
+                transform: translate(-30px, 55px) scale(0.94);
+            }
         }
 
         /* Navigation Bar */
         header {
             position: fixed;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 72px;
             display: flex;
             align-items: center;
@@ -129,7 +147,7 @@
             background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             z-index: 100;
             /* Subtle top glow line */
             box-shadow: 0 1px 0 rgba(0, 229, 255, 0.1), 0 10px 30px rgba(0, 0, 0, 0.7);
@@ -263,7 +281,7 @@
             gap: 10px;
             padding: 7px 18px;
             border-radius: 30px;
-            background: linear-gradient(135deg, rgba(0,102,255,0.15), rgba(0,229,255,0.1));
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.15), rgba(0, 229, 255, 0.1));
             border: 1px solid rgba(0, 229, 255, 0.25);
             font-size: 12.5px;
             font-weight: 600;
@@ -283,8 +301,17 @@
         }
 
         @keyframes dotPulse {
-            0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--success); }
-            50% { opacity: 0.6; box-shadow: 0 0 18px var(--success); }
+
+            0%,
+            100% {
+                opacity: 1;
+                box-shadow: 0 0 8px var(--success);
+            }
+
+            50% {
+                opacity: 0.6;
+                box-shadow: 0 0 18px var(--success);
+            }
         }
 
         .hero-title {
@@ -360,7 +387,7 @@
             padding: 15px 28px;
             border-radius: 40px;
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             color: var(--text-main);
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
@@ -410,7 +437,7 @@
             align-items: center;
             justify-content: center;
             box-shadow:
-                0 0 0 1px rgba(255,255,255,0.05),
+                0 0 0 1px rgba(255, 255, 255, 0.05),
                 0 25px 70px rgba(0, 0, 0, 0.95),
                 0 0 60px rgba(0, 102, 255, 0.25);
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s;
@@ -476,8 +503,15 @@
         }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
         }
 
         /* Features Grid */
@@ -528,7 +562,7 @@
 
         .feature-card {
             background: linear-gradient(145deg, rgba(14, 20, 44, 0.9), rgba(8, 12, 28, 0.95));
-            border: 1px solid rgba(255,255,255,0.07);
+            border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 22px;
             padding: 32px 28px;
             backdrop-filter: blur(16px);
@@ -541,25 +575,37 @@
         .feature-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0;
+            top: 0;
+            left: 0;
+            right: 0;
             height: 2px;
             background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent-cyan)), transparent);
             opacity: 0;
             transition: opacity 0.3s;
         }
 
-        .feature-card:hover::before { opacity: 1; }
+        .feature-card:hover::before {
+            opacity: 1;
+        }
 
         .feature-card:hover {
             background: linear-gradient(145deg, rgba(20, 30, 70, 0.95), rgba(12, 18, 45, 0.98));
             border-color: rgba(0, 229, 255, 0.2);
             transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px rgba(0,102,255,0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 102, 255, 0.1);
         }
 
-        .feature-card:nth-child(1) { --card-accent: #00e5ff; }
-        .feature-card:nth-child(2) { --card-accent: #7c3aed; }
-        .feature-card:nth-child(3) { --card-accent: #10b981; }
+        .feature-card:nth-child(1) {
+            --card-accent: #00e5ff;
+        }
+
+        .feature-card:nth-child(2) {
+            --card-accent: #7c3aed;
+        }
+
+        .feature-card:nth-child(3) {
+            --card-accent: #10b981;
+        }
 
         .feature-icon {
             width: 54px;
@@ -574,21 +620,21 @@
         }
 
         .feature-card:nth-child(1) .feature-icon {
-            background: linear-gradient(135deg, rgba(0,229,255,0.15), rgba(0,102,255,0.15));
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.15), rgba(0, 102, 255, 0.15));
             border: 1px solid rgba(0, 229, 255, 0.25);
-            box-shadow: 0 0 20px rgba(0,229,255,0.1);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.1);
         }
 
         .feature-card:nth-child(2) .feature-icon {
-            background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(236,72,153,0.15));
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(236, 72, 153, 0.15));
             border: 1px solid rgba(124, 58, 237, 0.3);
-            box-shadow: 0 0 20px rgba(124,58,237,0.15);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.15);
         }
 
         .feature-card:nth-child(3) .feature-icon {
-            background: linear-gradient(135deg, rgba(16,185,129,0.15), rgba(5,150,105,0.15));
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.15));
             border: 1px solid rgba(16, 185, 129, 0.3);
-            box-shadow: 0 0 20px rgba(16,185,129,0.1);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.1);
         }
 
         .feature-card h3 {
@@ -703,7 +749,10 @@
         .slider {
             position: absolute;
             cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background-color: rgba(255, 255, 255, 0.2);
             transition: .3s;
             border-radius: 22px;
@@ -721,11 +770,11 @@
             border-radius: 50%;
         }
 
-        input:checked + .slider {
+        input:checked+.slider {
             background-color: var(--accent-cyan);
         }
 
-        input:checked + .slider:before {
+        input:checked+.slider:before {
             transform: translateX(16px);
         }
 
@@ -755,16 +804,48 @@
             grid-template-columns: 1fr 420px;
             height: calc(100vh - 70px);
             overflow: hidden;
-            min-height: 0; /* Ensure children can shrink/scroll */
+            min-height: 0;
+            /* Ensure children can shrink/scroll */
         }
 
-        @media (max-width: 900px) {
-            .modal-body {
-                grid-template-columns: 1fr;
-            }
-            .chat-sidebar {
-                display: none;
-            }
+        /* Mobile handling for modal-body / chat-sidebar lives in the
+           RESPONSIVE / MOBILE OPTIMIZATION block near the end of this
+           stylesheet, so all breakpoints stay in one place. */
+
+        .chat-sidebar-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 40;
+        }
+
+        .chat-toggle-btn {
+            display: none;
+            align-items: center;
+            gap: 8px;
+            margin-top: 6px;
+            padding: 10px 20px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .chat-toggle-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(0, 229, 255, 0.35);
+        }
+
+        .chat-toggle-btn svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
         }
 
         /* Center AI Display View — seamless black bg matching video */
@@ -792,7 +873,9 @@
             z-index: 0;
         }
 
-        .orb-wrapper, .assistant-status-pill, .mic-control-area {
+        .orb-wrapper,
+        .assistant-status-pill,
+        .mic-control-area {
             position: relative;
             z-index: 1;
         }
@@ -831,8 +914,17 @@
         }
 
         @keyframes orbAuraPulse {
-            0%, 100% { opacity: 0.6; transform: scale(0.97) translateZ(0); }
-            50% { opacity: 1; transform: scale(1.03) translateZ(0); }
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(0.97) translateZ(0);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.03) translateZ(0);
+            }
         }
 
         .orb-ring {
@@ -916,14 +1008,30 @@
         }
 
         @keyframes pulseListening {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.4); opacity: 0.6; }
-            100% { transform: scale(1); opacity: 1; }
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         @keyframes pulseSpeaking {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.3); }
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.3);
+            }
         }
 
         /* Large Interactive Mic Button */
@@ -992,8 +1100,10 @@
             display: flex;
             flex-direction: column;
             height: 100%;
-            overflow: hidden; /* Prevent sidebar itself from growing */
-            min-height: 0;   /* Critical: lets flex child shrink properly */
+            overflow: hidden;
+            /* Prevent sidebar itself from growing */
+            min-height: 0;
+            /* Critical: lets flex child shrink properly */
         }
 
         .chat-sidebar-header {
@@ -1002,7 +1112,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-shrink: 0; /* Header never shrinks */
+            flex-shrink: 0;
+            /* Header never shrinks */
         }
 
         .chat-sidebar-header h3 {
@@ -1014,7 +1125,8 @@
 
         .chat-log {
             flex: 1;
-            min-height: 0;   /* Critical: allows flex-child to scroll internally */
+            min-height: 0;
+            /* Critical: allows flex-child to scroll internally */
             padding: 20px;
             overflow-y: auto;
             display: flex;
@@ -1048,8 +1160,15 @@
         }
 
         @keyframes fadeInMsg {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .msg.user {
@@ -1084,7 +1203,8 @@
             display: flex;
             gap: 10px;
             background: rgba(5, 7, 15, 0.6);
-            flex-shrink: 0; /* Never shrink — always visible at bottom */
+            flex-shrink: 0;
+            /* Never shrink — always visible at bottom */
         }
 
         .chat-input-bar input {
@@ -1129,6 +1249,427 @@
             margin: auto;
             padding: 20px;
         }
+
+        /* ==========================================
+           RESPONSIVE / MOBILE OPTIMIZATION
+           All breakpoints for phones & tablets live here
+           so layout rules aren't scattered across the file.
+           ========================================== */
+
+        /* Fluid type so headings scale smoothly between breakpoints
+           instead of jumping at fixed sizes. */
+        .hero-title {
+            font-size: clamp(30px, 6.2vw, 62px);
+        }
+
+        .section-title {
+            font-size: clamp(24px, 5.2vw, 38px);
+        }
+
+        /* Universal touch-target safety: nothing interactive should be
+           smaller than ~40px on any screen. */
+        button,
+        a,
+        select,
+        input {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        img,
+        video {
+            max-width: 100%;
+        }
+
+        /* ---------- Small laptops / large tablets ---------- */
+        @media (max-width: 1100px) {
+            header {
+                padding: 0 28px;
+            }
+
+            .hero-container {
+                padding: 0 28px;
+                gap: 40px;
+            }
+
+            .features-section {
+                padding: 0 28px 70px;
+            }
+        }
+
+        /* ---------- Tablets & small laptops (stack hero, keep nav) ---------- */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                gap: 36px;
+                padding-top: 10px;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-content {
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                max-width: 100%;
+            }
+
+            .hero-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+                row-gap: 14px;
+            }
+
+            .hero-cta-group {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            /* Assistant modal: single column, chat becomes a bottom drawer */
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-sidebar {
+                display: flex;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 72vh;
+                max-height: 72vh;
+                border-left: none;
+                border-top: 1px solid rgba(255, 255, 255, 0.12);
+                border-radius: 22px 22px 0 0;
+                transform: translateY(100%);
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 50;
+                box-shadow: 0 -25px 70px rgba(0, 0, 0, 0.6);
+            }
+
+            .chat-sidebar.open {
+                transform: translateY(0);
+            }
+
+            .chat-sidebar-backdrop.open {
+                display: block;
+            }
+
+            .chat-toggle-btn {
+                display: inline-flex;
+            }
+        }
+
+        /* ---------- Phones ---------- */
+        @media (max-width: 640px) {
+
+            /* Header */
+            header {
+                height: 60px;
+                padding: 0 14px;
+            }
+
+            .logo {
+                font-size: 16px;
+                gap: 8px;
+            }
+
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+            }
+
+            .badge-tag {
+                display: none;
+            }
+
+            nav {
+                gap: 10px;
+            }
+
+            nav a {
+                display: none;
+            }
+
+            /* keep only the primary CTA on phones */
+            .btn-primary {
+                padding: 9px 14px;
+                font-size: 12.5px;
+                gap: 6px;
+                white-space: nowrap;
+            }
+
+            .btn-primary svg {
+                width: 15px;
+                height: 15px;
+            }
+
+            /* Hero */
+            #landing-page {
+                padding-top: 78px;
+                padding-bottom: 50px;
+            }
+
+            .hero-container {
+                padding: 0 18px;
+            }
+
+            .hero-pill {
+                font-size: 11px;
+                padding: 6px 14px;
+                margin-bottom: 18px;
+            }
+
+            .hero-subtitle {
+                font-size: 14.5px;
+                margin-bottom: 26px;
+            }
+
+            .hero-stats {
+                gap: 22px;
+                margin-bottom: 26px;
+            }
+
+            .stat-value {
+                font-size: 20px;
+            }
+
+            .stat-label {
+                font-size: 11px;
+            }
+
+            .hero-cta-group {
+                flex-direction: column;
+                width: 100%;
+                gap: 12px;
+            }
+
+            .btn-large,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .btn-large {
+                padding: 14px 20px;
+                font-size: 15px;
+            }
+
+            .visual-card {
+                padding: 10px;
+                border-radius: 20px;
+            }
+
+            .hero-video-box {
+                border-radius: 14px;
+            }
+
+            .visual-status-pill {
+                font-size: 12px;
+                padding: 7px 14px;
+                text-align: center;
+            }
+
+            /* Features */
+            .features-section {
+                margin-top: 56px;
+                padding: 0 18px 46px;
+            }
+
+            .section-eyebrow {
+                font-size: 11px;
+            }
+
+            .section-subtitle {
+                font-size: 13.5px;
+                padding: 0 6px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .feature-card {
+                padding: 22px 18px;
+            }
+
+            .feature-icon {
+                width: 46px;
+                height: 46px;
+                font-size: 22px;
+                margin-bottom: 16px;
+            }
+
+            .feature-card h3 {
+                font-size: 18px;
+            }
+
+            .feature-card p {
+                font-size: 13.5px;
+            }
+
+            /* Assistant modal header */
+            .modal-header {
+                height: auto;
+                min-height: 56px;
+                padding: 10px 12px;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .modal-brand {
+                font-size: 15px;
+                gap: 8px;
+            }
+
+            .modal-brand .logo-icon {
+                width: 28px;
+                height: 28px;
+            }
+
+            .modal-controls {
+                width: 100%;
+                justify-content: space-between;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .control-group {
+                padding: 5px 10px;
+                font-size: 11.5px;
+                gap: 6px;
+            }
+
+            .control-group select {
+                max-width: 84px;
+                font-size: 11.5px;
+            }
+
+            .btn-icon {
+                width: 36px;
+                height: 36px;
+            }
+
+            /* Assistant modal body */
+            .ai-display-container {
+                padding: 14px 12px 20px;
+            }
+
+            .orb-wrapper {
+                max-height: 200px;
+                margin-bottom: 14px;
+            }
+
+            .assistant-status-pill {
+                font-size: 12.5px;
+                padding: 8px 16px;
+                margin-bottom: 18px;
+                text-align: center;
+                max-width: 100%;
+            }
+
+            .main-mic-btn {
+                width: 66px;
+                height: 66px;
+            }
+
+            .main-mic-btn img {
+                width: 32px;
+                height: 32px;
+            }
+
+            .mic-hint {
+                font-size: 11.5px;
+                text-align: center;
+            }
+
+            /* Chat drawer */
+            .chat-sidebar {
+                height: 78vh;
+                max-height: 78vh;
+                border-radius: 18px 18px 0 0;
+            }
+
+            .chat-sidebar-header {
+                padding: 12px 16px;
+            }
+
+            .chat-sidebar-header h3 {
+                font-size: 14px;
+            }
+
+            .chat-log {
+                padding: 14px;
+                gap: 10px;
+            }
+
+            .msg {
+                font-size: 13px;
+                padding: 10px 14px;
+                max-width: 90%;
+            }
+
+            .chat-input-bar {
+                padding: 10px 12px;
+            }
+
+            .chat-input-bar input {
+                font-size: 13px;
+                padding: 9px 14px;
+            }
+
+            .chat-input-bar button {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        /* ---------- Very small phones ---------- */
+        @media (max-width: 380px) {
+            .hero-title {
+                font-size: 27px;
+            }
+
+            .logo span {
+                font-size: 14px;
+            }
+
+            .stat-value {
+                font-size: 17px;
+            }
+
+            .hero-stats {
+                gap: 16px;
+            }
+
+            .orb-wrapper {
+                max-height: 170px;
+            }
+
+            .main-mic-btn {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* ---------- Respect reduced motion preferences ---------- */
+        @media (prefers-reduced-motion: reduce) {
+
+            .bg-blob,
+            .hero-pill .dot,
+            .visual-status-pill .pulse-dot,
+            .orb-aura,
+            .status-dot.listening,
+            .status-dot.speaking {
+                animation: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -1148,12 +1689,13 @@
         <a href="#" class="logo">
             <div class="logo-icon">
                 <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="9" stroke="#00e5ff" stroke-width="1.8"/>
-                    <circle cx="12" cy="12" r="4" fill="#00e5ff" fill-opacity="0.35" stroke="#0066ff" stroke-width="1.5"/>
-                    <line x1="12" y1="2" x2="12" y2="5" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="12" y1="19" x2="12" y2="22" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="2" y1="12" x2="5" y2="12" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
-                    <line x1="19" y1="12" x2="22" y2="12" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="#00e5ff" stroke-width="1.8" />
+                    <circle cx="12" cy="12" r="4" fill="#00e5ff" fill-opacity="0.35" stroke="#0066ff"
+                        stroke-width="1.5" />
+                    <line x1="12" y1="2" x2="12" y2="5" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" />
+                    <line x1="12" y1="19" x2="12" y2="22" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" />
+                    <line x1="2" y1="12" x2="5" y2="12" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" />
+                    <line x1="19" y1="12" x2="22" y2="12" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" />
                 </svg>
             </div>
             <span>JARVIS AI</span>
@@ -1164,7 +1706,11 @@
             <a href="#features">Features</a>
             <a href="#tech">Capabilities</a>
             <button class="btn-primary" id="headerTalkBtn">
-                <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+                    <path
+                        d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" />
+                </svg>
                 Talk with AI
             </button>
         </nav>
@@ -1183,7 +1729,8 @@
                     Your Personal <span>AI Voice Assistant</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Experience real-time, hands-free voice conversations powered by Groq's blazing-fast AI inference. Speak once — Jarvis listens, thinks, and responds.
+                    Experience real-time, hands-free voice conversations powered by Groq's blazing-fast AI inference.
+                    Speak once — Jarvis listens, thinks, and responds.
                 </p>
 
                 <!-- Stats row -->
@@ -1204,7 +1751,11 @@
 
                 <div class="hero-cta-group">
                     <button class="btn-primary btn-large" id="heroTalkBtn">
-                        <svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/><path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z" />
+                            <path
+                                d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" />
+                        </svg>
                         Talk with AI
                     </button>
                     <a href="#features" class="btn-secondary">See Features &darr;</a>
@@ -1214,7 +1765,8 @@
             <div class="hero-visual">
                 <div class="visual-card">
                     <div class="hero-video-box">
-                        <video class="hero-video" src="Graphics/Jarvis.mp4" autoplay loop muted playsinline preload="auto"></video>
+                        <video class="hero-video" src="Graphics/Jarvis.mp4" autoplay loop muted playsinline
+                            preload="auto"></video>
                     </div>
                     <div class="visual-status-pill">
                         <span class="pulse-dot"></span>
@@ -1228,22 +1780,26 @@
         <section class="features-section" id="features">
             <p class="section-eyebrow">Why Jarvis AI</p>
             <h2 class="section-title">Built for Real Conversation</h2>
-            <p class="section-subtitle">Not just a chatbot. A voice-native AI that listens, understands, and speaks back — with zero friction.</p>
+            <p class="section-subtitle">Not just a chatbot. A voice-native AI that listens, understands, and speaks back
+                — with zero friction.</p>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🎙️</div>
                     <h3>Continuous Hands-Free Mic</h3>
-                    <p>Activate once and forget the button. Jarvis auto-listens after every response — true hands-free conversation with smart turn detection.</p>
+                    <p>Activate once and forget the button. Jarvis auto-listens after every response — true hands-free
+                        conversation with smart turn detection.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
                     <h3>Sub-300ms AI Response</h3>
-                    <p>Powered by Groq's custom LPU™ hardware — 10x faster than GPU inference — for conversations that feel genuinely real-time.</p>
+                    <p>Powered by Groq's custom LPU™ hardware — 10x faster than GPU inference — for conversations that
+                        feel genuinely real-time.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🗣️</div>
                     <h3>Natural Voice Synthesis</h3>
-                    <p>Multi-voice TTS engine with selectable voices. Jarvis speaks back in natural, expressive speech — not robotic text-to-speech.</p>
+                    <p>Multi-voice TTS engine with selectable voices. Jarvis speaks back in natural, expressive speech —
+                        not robotic text-to-speech.</p>
                 </div>
             </div>
         </section>
@@ -1258,12 +1814,15 @@
             <div class="modal-brand">
                 <div class="logo-icon">
                     <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="9" stroke="#00e5ff" stroke-width="1.8"/>
-                        <circle cx="12" cy="12" r="4" fill="#00e5ff" fill-opacity="0.35" stroke="#0066ff" stroke-width="1.5"/>
-                        <line x1="12" y1="2" x2="12" y2="5" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="12" y1="19" x2="12" y2="22" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="2" y1="12" x2="5" y2="12" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
-                        <line x1="19" y1="12" x2="22" y2="12" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="9" stroke="#00e5ff" stroke-width="1.8" />
+                        <circle cx="12" cy="12" r="4" fill="#00e5ff" fill-opacity="0.35" stroke="#0066ff"
+                            stroke-width="1.5" />
+                        <line x1="12" y1="2" x2="12" y2="5" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" />
+                        <line x1="12" y1="19" x2="12" y2="22" stroke="#00e5ff" stroke-width="2"
+                            stroke-linecap="round" />
+                        <line x1="2" y1="12" x2="5" y2="12" stroke="#00e5ff" stroke-width="2" stroke-linecap="round" />
+                        <line x1="19" y1="12" x2="22" y2="12" stroke="#00e5ff" stroke-width="2"
+                            stroke-linecap="round" />
                     </svg>
                 </div>
                 <span>Jarvis Voice Assistant</span>
@@ -1287,7 +1846,10 @@
 
                 <!-- Close Modal Button -->
                 <button class="btn-icon" id="closeModalBtn" title="Close Assistant">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
                 </button>
             </div>
         </div>
@@ -1298,7 +1860,8 @@
             <div class="ai-display-container">
                 <div class="orb-wrapper" id="orbWrapper">
                     <div class="orb-aura" id="orbAura"></div>
-                    <video class="orb-video" id="assistantOrbVideo" src="Graphics/Jarvis.mp4" autoplay loop muted playsinline preload="auto"></video>
+                    <video class="orb-video" id="assistantOrbVideo" src="Graphics/Jarvis.mp4" autoplay loop muted
+                        playsinline preload="auto"></video>
                 </div>
 
                 <!-- Status Banner -->
@@ -1313,16 +1876,28 @@
                         <img id="micIcon" src="Graphics/Mic_off.png" alt="Mic Switch">
                     </button>
                     <span class="mic-hint" id="micHint">Click to Turn Mic ON</span>
+
+                    <!-- Only visible on phones/tablets: opens the chat drawer -->
+                    <button class="chat-toggle-btn" id="chatToggleBtn" type="button">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        View Transcript
+                    </button>
                 </div>
             </div>
+
+            <!-- Tap-outside-to-close backdrop for the mobile chat drawer -->
+            <div class="chat-sidebar-backdrop" id="chatBackdrop"></div>
 
             <!-- Right: Real-Time Chat Log Sidebar -->
             <div class="chat-sidebar">
                 <div class="chat-sidebar-header">
                     <h3>Live Transcript</h3>
-                    <button class="btn-secondary" style="padding: 4px 12px; font-size: 12px;" id="clearChatBtn">Clear</button>
+                    <button class="btn-secondary" style="padding: 4px 12px; font-size: 12px;"
+                        id="clearChatBtn">Clear</button>
                 </div>
-                
+
                 <div class="chat-log" id="chatLog">
                     <div class="empty-chat-state" id="emptyChatState">
                         Your conversation history will appear here in real-time.
@@ -1332,7 +1907,11 @@
                 <div class="chat-input-bar">
                     <input type="text" id="manualInput" placeholder="Type a message instead...">
                     <button id="sendBtn">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
                     </button>
                 </div>
             </div>
@@ -1358,6 +1937,25 @@
         const manualInput = document.getElementById('manualInput');
         const sendBtn = document.getElementById('sendBtn');
         const clearChatBtn = document.getElementById('clearChatBtn');
+        const chatToggleBtn = document.getElementById('chatToggleBtn');
+        const chatBackdrop = document.getElementById('chatBackdrop');
+        const chatSidebarEl = document.querySelector('.chat-sidebar');
+
+        // Mobile chat drawer: slides the transcript up from the bottom
+        // on phones/tablets, where there's no room for a side panel.
+        function toggleChatSidebar(forceOpen) {
+            if (!chatSidebarEl) return;
+            const shouldOpen = forceOpen !== undefined ? forceOpen : !chatSidebarEl.classList.contains('open');
+            chatSidebarEl.classList.toggle('open', shouldOpen);
+            if (chatBackdrop) chatBackdrop.classList.toggle('open', shouldOpen);
+        }
+
+        if (chatToggleBtn) {
+            chatToggleBtn.addEventListener('click', () => toggleChatSidebar());
+        }
+        if (chatBackdrop) {
+            chatBackdrop.addEventListener('click', () => toggleChatSidebar(false));
+        }
 
         // State Flags
         let isMicOn = false;
@@ -1371,7 +1969,7 @@
         function openAssistant() {
             assistantModal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            
+
             // 1. Pause hero background video to free 100% GPU video decoding power
             const heroVid = document.querySelector('.hero-video');
             if (heroVid && !heroVid.paused) {
@@ -1386,7 +1984,7 @@
                 orbVideo.volume = 0;
                 orbVideo.loop = true;
                 if (orbVideo.paused) {
-                    orbVideo.play().catch(() => {});
+                    orbVideo.play().catch(() => { });
                 }
             }
 
@@ -1399,6 +1997,7 @@
         function closeAssistant() {
             assistantModal.classList.remove('active');
             document.body.style.overflow = 'auto';
+            toggleChatSidebar(false);
             stopMic();
             if (speechSynthesis.speaking) {
                 speechSynthesis.cancel();
@@ -1407,7 +2006,7 @@
             // Resume hero background video when modal closes
             const heroVid = document.querySelector('.hero-video');
             if (heroVid && heroVid.paused) {
-                heroVid.play().catch(() => {});
+                heroVid.play().catch(() => { });
             }
         }
 
@@ -1480,7 +2079,7 @@
                 if (isMicOn && continuousToggle.checked && !isSpeaking && !isThinking) {
                     setTimeout(() => {
                         if (isMicOn && !isSpeaking && !isThinking) {
-                            try { recognition.start(); } catch (e) {}
+                            try { recognition.start(); } catch (e) { }
                         }
                     }, 400);
                 } else if (!isSpeaking && !isThinking) {
@@ -1519,7 +2118,7 @@
             mainMicBtn.className = 'main-mic-btn';
             micIcon.src = 'Graphics/Mic_off.png';
             if (recognition) {
-                try { recognition.stop(); } catch (e) {}
+                try { recognition.stop(); } catch (e) { }
             }
             if (!isSpeaking && !isThinking) {
                 updateStatus('', 'Mic Muted');
@@ -1572,7 +2171,7 @@
 
             // Pause recognition while speaking to avoid feedback loop
             if (recognition && isListening) {
-                try { recognition.stop(); } catch(e) {}
+                try { recognition.stop(); } catch (e) { }
             }
 
             speechSynthesis.cancel(); // Stop previous audio if playing
@@ -1592,7 +2191,7 @@
                     updateStatus('listening', 'Listening... Speak now');
                     setTimeout(() => {
                         if (isMicOn && !isSpeaking && !isThinking) {
-                            try { recognition.start(); } catch (e) {}
+                            try { recognition.start(); } catch (e) { }
                         }
                     }, 300);
                 } else {
@@ -1604,7 +2203,7 @@
             utterance.onerror = () => {
                 isSpeaking = false;
                 if (isMicOn && continuousToggle.checked) {
-                    try { recognition.start(); } catch (e) {}
+                    try { recognition.start(); } catch (e) { }
                 }
             };
 
@@ -1678,7 +2277,7 @@
                 if (v.paused) {
                     v.play().catch(() => {
                         const unlock = () => {
-                            if (v.paused) v.play().catch(() => {});
+                            if (v.paused) v.play().catch(() => { });
                             document.removeEventListener('click', unlock);
                             document.removeEventListener('touchstart', unlock);
                         };
