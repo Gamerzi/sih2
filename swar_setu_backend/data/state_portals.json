@@ -1,0 +1,16 @@
+{
+  "_note": "Main state government sites, used only as pointers. Verify and replace with each state's employment/skill portal before launch.",
+  "Telangana": "https://www.telangana.gov.in",
+  "Andhra Pradesh": "https://www.ap.gov.in",
+  "Karnataka": "https://www.karnataka.gov.in",
+  "Tamil Nadu": "https://www.tn.gov.in",
+  "Maharashtra": "https://www.maharashtra.gov.in",
+  "Uttar Pradesh": "https://up.gov.in",
+  "Bihar": "https://state.bihar.gov.in",
+  "Rajasthan": "https://rajasthan.gov.in",
+  "Madhya Pradesh": "https://mp.gov.in",
+  "Gujarat": "https://gujaratindia.gov.in",
+  "West Bengal": "https://wb.gov.in",
+  "Odisha": "https://odisha.gov.in",
+  "Kerala": "https://kerala.gov.in"
+}
